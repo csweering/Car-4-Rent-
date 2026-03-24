@@ -8,7 +8,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ t }) => {
   return (
-    <footer id="contact" className="bg-brand-paper pt-24 pb-12 border-t border-brand-ink/5">
+    <footer className="bg-brand-paper pt-24 pb-12 border-t border-brand-ink/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="lg:col-span-1">

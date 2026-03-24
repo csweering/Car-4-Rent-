@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Translation } from '../types';
 import { ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface HeroProps {
   t: Translation;
@@ -61,14 +62,12 @@ export const Hero: React.FC<HeroProps> = ({ t, onBook }) => {
                 {t.bookNow}
                 <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </motion.button>
-              <motion.a 
-                href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full text-sm font-bold tracking-widest uppercase flex items-center justify-center"
+              <Link 
+                to="/contact"
+                className="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full text-sm font-bold tracking-widest uppercase flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
               >
                 {t.contactUs}
-              </motion.a>
+              </Link>
             </div>
           </motion.div>
         </div>

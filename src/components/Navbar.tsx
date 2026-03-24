@@ -125,7 +125,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, onBook, t }) => {
             </div>
 
             <NavLink href="#about">About</NavLink>
-            <NavLink href="#contact">Contact</NavLink>
+            <NavLink href="/contact">Contact</NavLink>
             
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -211,7 +211,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, onBook, t }) => {
               </div>
 
               <NavLink href="#about" onClick={() => setIsOpen(false)}>About</NavLink>
-              <NavLink href="#contact" onClick={() => setIsOpen(false)}>Contact</NavLink>
+              <NavLink href="/contact" onClick={() => setIsOpen(false)}>Contact</NavLink>
               
               <button
                 onClick={() => { onBook(); setIsOpen(false); }}

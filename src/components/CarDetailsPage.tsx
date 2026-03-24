@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Translation } from '../types';
+import { Translation, Review } from '../types';
 import { CARS } from '../constants';
-import { ArrowLeft, Check, Fuel, Gauge, Zap } from 'lucide-react';
+import { ArrowLeft, Check, Fuel, Gauge, Zap, Star } from 'lucide-react';
 
 interface CarDetailsPageProps {
   t: Translation;
@@ -14,9 +14,51 @@ export const CarDetailsPage: React.FC<CarDetailsPageProps> = ({ t, onBook }) => 
   const { carId } = useParams<{ carId: string }>();
   const car = CARS.find((c) => c.id === carId);
 
+  const [reviews, setReviews] = useState<Review[]>([
+    {
+      id: '1',
+      carId: carId || '',
+      userName: 'Alex M.',
+      rating: 5,
+      comment: 'Incredible car, the service was impeccable. Highly recommend!',
+      date: '2023-10-15'
+    },
+    {
+      id: '2',
+      carId: carId || '',
+      userName: 'Sarah J.',
+      rating: 4,
+      comment: 'Beautiful vehicle, very clean. The pickup process was a bit slow but otherwise great.',
+      date: '2023-11-02'
+    }
+  ]);
+
+  const [newReview, setNewReview] = useState({
+    userName: '',
+    rating: 5,
+    comment: ''
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [carId]);
+
+  const handleReviewSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newReview.userName || !newReview.comment) return;
+
+    const review: Review = {
+      id: Date.now().toString(),
+      carId: car?.id || '',
+      userName: newReview.userName,
+      rating: newReview.rating,
+      comment: newReview.comment,
+      date: new Date().toISOString().split('T')[0]
+    };
+
+    setReviews([review, ...reviews]);
+    setNewReview({ userName: '', rating: 5, comment: '' });
+  };
 
   if (!car) {
     return (
@@ -89,6 +131,99 @@ export const CarDetailsPage: React.FC<CarDetailsPageProps> = ({ t, onBook }) => 
                   <span className="text-xs uppercase tracking-widest text-brand-ink/40 mb-2">Top Speed</span>
                   <span className="text-xl font-bold">{car.specs.topSpeed}</span>
                 </div>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-3xl font-serif mb-6">Customer Reviews</h2>
+              
+              {/* Review Form */}
+              <div className="bg-white p-8 rounded-3xl border border-brand-ink/5 shadow-sm mb-8">
+                <h3 className="text-xl font-serif mb-4">Leave a Review</h3>
+                <form onSubmit={handleReviewSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-[10px] uppercase tracking-widest text-brand-ink/40 mb-2 font-bold">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={newReview.userName}
+                      onChange={(e) => setNewReview({ ...newReview, userName: e.target.value })}
+                      className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-primary transition-colors"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] uppercase tracking-widest text-brand-ink/40 mb-2 font-bold">
+                      Rating
+                    </label>
+                    <div className="flex gap-2">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                          key={star}
+                          type="button"
+                          onClick={() => setNewReview({ ...newReview, rating: star })}
+                          className="focus:outline-none"
+                        >
+                          <Star
+                            className={`w-6 h-6 ${
+                              star <= newReview.rating
+                                ? 'text-yellow-400 fill-yellow-400'
+                                : 'text-gray-300'
+                            }`}
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-[10px] uppercase tracking-widest text-brand-ink/40 mb-2 font-bold">
+                      Comment
+                    </label>
+                    <textarea
+                      required
+                      value={newReview.comment}
+                      onChange={(e) => setNewReview({ ...newReview, comment: e.target.value })}
+                      className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-primary transition-colors min-h-[100px]"
+                      placeholder="Share your experience..."
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="bg-brand-ink text-white px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-primary transition-colors"
+                  >
+                    Submit Review
+                  </button>
+                </form>
+              </div>
+
+              {/* Reviews List */}
+              <div className="space-y-6">
+                {reviews.filter(r => r.carId === car.id).map((review) => (
+                  <div key={review.id} className="bg-white p-6 rounded-3xl border border-brand-ink/5 shadow-sm">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h4 className="font-bold text-brand-ink">{review.userName}</h4>
+                        <p className="text-xs text-brand-ink/40">{review.date}</p>
+                      </div>
+                      <div className="flex gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`w-4 h-4 ${
+                              i < review.rating ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <p className="text-brand-ink/70 text-sm leading-relaxed">{review.comment}</p>
+                  </div>
+                ))}
+                {reviews.filter(r => r.carId === car.id).length === 0 && (
+                  <p className="text-brand-ink/40 text-sm italic">No reviews yet. Be the first to review this car!</p>
+                )}
               </div>
             </section>
           </div>
