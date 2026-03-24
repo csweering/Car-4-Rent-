@@ -82,7 +82,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({ t, isOpen, onClose, se
                       <select 
                         value={formData.carId}
                         onChange={(e) => setFormData({ ...formData, carId: e.target.value })}
-                        className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-purple transition-colors appearance-none"
+                        className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-primary transition-colors appearance-none"
                       >
                         {CARS.map(car => (
                           <option key={car.id} value={car.id}>{car.name}</option>
@@ -96,13 +96,13 @@ export const BookingForm: React.FC<BookingFormProps> = ({ t, isOpen, onClose, se
                         {t.pickUpDate}
                       </label>
                       <div className="relative">
-                        <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-purple" />
+                        <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-primary" />
                         <input 
                           type="date" 
                           required
                           value={formData.pickUpDate}
                           onChange={(e) => setFormData({ ...formData, pickUpDate: e.target.value })}
-                          className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-brand-purple transition-colors"
+                          className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-brand-primary transition-colors"
                         />
                       </div>
                     </div>
@@ -111,13 +111,13 @@ export const BookingForm: React.FC<BookingFormProps> = ({ t, isOpen, onClose, se
                         {t.dropOffDate}
                       </label>
                       <div className="relative">
-                        <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-purple" />
+                        <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-primary" />
                         <input 
                           type="date" 
                           required
                           value={formData.dropOffDate}
                           onChange={(e) => setFormData({ ...formData, dropOffDate: e.target.value })}
-                          className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-brand-purple transition-colors"
+                          className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-brand-primary transition-colors"
                         />
                       </div>
                     </div>
@@ -128,11 +128,11 @@ export const BookingForm: React.FC<BookingFormProps> = ({ t, isOpen, onClose, se
                         {t.pickUpLocation}
                       </label>
                       <div className="relative">
-                        <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-purple" />
+                        <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-primary" />
                         <select 
                           value={formData.pickUpLocation}
                           onChange={(e) => setFormData({ ...formData, pickUpLocation: e.target.value })}
-                          className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-brand-purple transition-colors appearance-none"
+                          className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-brand-primary transition-colors appearance-none"
                         >
                           <option value="Cannes">Cannes</option>
                           <option value="Nice Airport">Nice Airport (NCE)</option>
@@ -146,11 +146,11 @@ export const BookingForm: React.FC<BookingFormProps> = ({ t, isOpen, onClose, se
                         {t.dropOffLocation}
                       </label>
                       <div className="relative">
-                        <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-purple" />
+                        <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-primary" />
                         <select 
                           value={formData.dropOffLocation}
                           onChange={(e) => setFormData({ ...formData, dropOffLocation: e.target.value })}
-                          className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-brand-purple transition-colors appearance-none"
+                          className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-brand-primary transition-colors appearance-none"
                         >
                           <option value="Cannes">Cannes</option>
                           <option value="Nice Airport">Nice Airport (NCE)</option>
@@ -166,14 +166,14 @@ export const BookingForm: React.FC<BookingFormProps> = ({ t, isOpen, onClose, se
                         {t.fullName}
                       </label>
                       <div className="relative">
-                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-purple" />
+                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-primary" />
                         <input 
                           type="text" 
                           required
                           placeholder="John Doe"
                           value={formData.fullName}
                           onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                          className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-brand-purple transition-colors"
+                          className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-brand-primary transition-colors"
                         />
                       </div>
                     </div>
@@ -182,14 +182,14 @@ export const BookingForm: React.FC<BookingFormProps> = ({ t, isOpen, onClose, se
                         {t.emailAddress}
                       </label>
                       <div className="relative">
-                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-purple" />
+                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-primary" />
                         <input 
                           type="email" 
                           required
                           placeholder="john@example.com"
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-brand-purple transition-colors"
+                          className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-brand-primary transition-colors"
                         />
                       </div>
                     </div>
@@ -198,14 +198,14 @@ export const BookingForm: React.FC<BookingFormProps> = ({ t, isOpen, onClose, se
                         {t.phoneNumber}
                       </label>
                       <div className="relative">
-                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-purple" />
+                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-primary" />
                         <input 
                           type="tel" 
                           required
                           placeholder="+33 6 00 00 00 00"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-brand-purple transition-colors"
+                          className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-brand-primary transition-colors"
                         />
                       </div>
                     </div>
@@ -215,7 +215,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({ t, isOpen, onClose, se
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
-                    className="w-full bg-brand-purple text-white py-4 rounded-xl text-sm font-bold uppercase tracking-widest shadow-lg shadow-brand-purple/20"
+                    className="w-full bg-brand-primary text-brand-ink py-4 rounded-xl text-sm font-bold uppercase tracking-widest shadow-lg shadow-brand-primary/20"
                   >
                     {t.confirmBooking}
                   </motion.button>
@@ -226,9 +226,9 @@ export const BookingForm: React.FC<BookingFormProps> = ({ t, isOpen, onClose, se
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="w-20 h-20 bg-brand-purple/10 rounded-full flex items-center justify-center mx-auto mb-8"
+                  className="w-20 h-20 bg-brand-primary/10 rounded-full flex items-center justify-center mx-auto mb-8"
                 >
-                  <CheckCircle className="w-10 h-10 text-brand-purple" />
+                  <CheckCircle className="w-10 h-10 text-brand-primary" />
                 </motion.div>
                 <h2 className="text-3xl font-serif mb-4">{t.bookingSuccess}</h2>
                 <p className="text-brand-ink/60 mb-10 leading-relaxed">

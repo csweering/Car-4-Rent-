@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Translation, Car } from '../types';
 import { CARS } from '../constants';
-import { Fuel, Gauge, Zap } from 'lucide-react';
+import { Fuel, Gauge, Zap, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface FleetProps {
   t: Translation;
@@ -20,7 +21,14 @@ export const Fleet: React.FC<FleetProps> = ({ t, onBook }) => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl font-serif mb-4">{t.fleetTitle}</h2>
-            <p className="text-brand-ink/60 max-w-2xl mx-auto">{t.fleetSubtitle}</p>
+            <p className="text-brand-ink/60 max-w-2xl mx-auto mb-8">{t.fleetSubtitle}</p>
+            <Link 
+              to="/pricing" 
+              className="inline-flex items-center text-brand-primary text-xs font-bold uppercase tracking-widest hover:text-brand-ink transition-colors group"
+            >
+              View Full Price List & Details
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </motion.div>
         </div>
 
@@ -41,7 +49,7 @@ const CarCard: React.FC<{ car: Car; t: Translation; index: number; onBook: (carI
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="group bg-brand-paper rounded-3xl overflow-hidden border border-brand-ink/5 hover:border-brand-purple/20 transition-all duration-500"
+      className="group bg-brand-paper rounded-3xl overflow-hidden border border-brand-ink/5 hover:border-brand-primary/20 transition-all duration-500"
     >
       <div className="relative h-64 overflow-hidden">
         <img 
@@ -61,22 +69,22 @@ const CarCard: React.FC<{ car: Car; t: Translation; index: number; onBook: (carI
         <div className="flex justify-between items-start mb-6">
           <h3 className="text-xl font-serif font-bold">{car.name}</h3>
           <div className="text-right">
-            <span className="text-2xl font-bold text-brand-purple">€{car.pricePerDay}</span>
+            <span className="text-2xl font-bold text-brand-primary">€{car.pricePerDay}</span>
             <p className="text-[10px] uppercase tracking-widest text-brand-ink/40">{t.perDay}</p>
           </div>
         </div>
 
         <div className="grid grid-cols-3 gap-4 mb-8 border-y border-brand-ink/5 py-4">
           <div className="flex flex-col items-center">
-            <Zap className="w-4 h-4 text-brand-gold mb-1" />
+            <Zap className="w-4 h-4 text-brand-primary mb-1" />
             <span className="text-[10px] font-bold">{car.specs.power}</span>
           </div>
           <div className="flex flex-col items-center">
-            <Gauge className="w-4 h-4 text-brand-gold mb-1" />
+            <Gauge className="w-4 h-4 text-brand-primary mb-1" />
             <span className="text-[10px] font-bold">{car.specs.acceleration}</span>
           </div>
           <div className="flex flex-col items-center">
-            <Fuel className="w-4 h-4 text-brand-gold mb-1" />
+            <Fuel className="w-4 h-4 text-brand-primary mb-1" />
             <span className="text-[10px] font-bold">{car.specs.topSpeed}</span>
           </div>
         </div>
@@ -85,7 +93,7 @@ const CarCard: React.FC<{ car: Car; t: Translation; index: number; onBook: (carI
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => onBook(car.id)}
-          className="w-full bg-brand-ink text-white py-4 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-purple transition-colors"
+          className="w-full bg-brand-ink text-white py-4 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-primary transition-colors"
         >
           {t.bookNow}
         </motion.button>

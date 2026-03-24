@@ -41,6 +41,20 @@ export interface Translation {
   bookingSuccessText: string;
   close: string;
   galleryTitle: string;
+  pricingTitle: string;
+  destinationsTitle: string;
+  recommendations: string;
+  bestCarForTrip: string;
+}
+
+export interface City {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+  recommendations: string[];
+  bestCarAdvice: string;
+  recommendedCarId: string;
 }
 
 export type Language = 'en' | 'fr';

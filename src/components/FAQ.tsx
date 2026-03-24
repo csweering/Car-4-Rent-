@@ -20,7 +20,7 @@ export const FAQ: React.FC<FAQProps> = ({ t }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <HelpCircle className="w-12 h-12 text-brand-purple mx-auto mb-4" />
+            <HelpCircle className="w-12 h-12 text-brand-primary mx-auto mb-4" />
             <h2 className="text-4xl md:text-5xl font-serif mb-4">{t.faqTitle}</h2>
           </motion.div>
         </div>
@@ -44,7 +44,7 @@ export const FAQ: React.FC<FAQProps> = ({ t }) => {
                 </span>
                 <ChevronDown 
                   className={cn(
-                    "w-5 h-5 text-brand-purple transition-transform duration-300",
+                    "w-5 h-5 text-brand-primary transition-transform duration-300",
                     activeIndex === index ? "rotate-180" : ""
                   )} 
                 />

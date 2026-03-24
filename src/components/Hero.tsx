@@ -14,8 +14,8 @@ export const Hero: React.FC<HeroProps> = ({ t, onBook }) => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1506012733851-00f4e69850fa?auto=format&fit=crop&q=80&w=2000" 
-          alt="Cannes French Riviera" 
+          src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&q=80&w=2000" 
+          alt="Luxury Car on French Riviera" 
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
@@ -29,11 +29,11 @@ export const Hero: React.FC<HeroProps> = ({ t, onBook }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-block text-brand-gold text-xs font-bold tracking-[0.3em] uppercase mb-4">
+            <span className="inline-block text-brand-primary text-xs font-bold tracking-[0.3em] uppercase mb-4">
               Cannes • Nice • Monaco • St. Tropez
             </span>
             <div className="flex items-center space-x-3 mb-4">
-              <span className="bg-brand-purple/20 text-brand-purple text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-brand-purple/30">
+              <span className="bg-brand-primary/20 text-brand-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-brand-primary/30">
                 Tailor-Made Experience
               </span>
               <span className="bg-white/10 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-white/20">
@@ -56,7 +56,7 @@ export const Hero: React.FC<HeroProps> = ({ t, onBook }) => {
                 onClick={onBook}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-brand-purple text-white px-8 py-4 rounded-full text-sm font-bold tracking-widest uppercase flex items-center justify-center group"
+                className="bg-brand-primary text-brand-ink px-8 py-4 rounded-full text-sm font-bold tracking-widest uppercase flex items-center justify-center group"
               >
                 {t.bookNow}
                 <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

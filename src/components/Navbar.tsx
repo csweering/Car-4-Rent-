@@ -1,8 +1,10 @@
 import React from 'react';
-import { motion } from 'motion/react';
-import { Globe, Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Globe, Menu, X, ChevronDown } from 'lucide-react';
 import { Language, Translation } from '../types';
 import { cn } from '../lib/utils';
+import { Link, useLocation } from 'react-router-dom';
+import { CITIES } from '../constants';
 
 interface NavbarProps {
   lang: Language;
@@ -13,88 +15,219 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, onBook, t }) => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isFleetOpen, setIsFleetOpen] = React.useState(false);
+  const [isDestinationsOpen, setIsDestinationsOpen] = React.useState(false);
+  const location = useLocation();
+
+  const isHome = location.pathname === '/';
+
+  const fleetCategories = [
+    { name: 'Sports cars', id: 'Sport' },
+    { name: 'Luxury cars', id: 'Luxury' },
+    { name: 'SUV', id: 'SUV' },
+    { name: 'Convertible', id: 'Convertible' }
+  ];
+
+  const NavLink = ({ href, children, onClick }: { href: string; children: React.ReactNode; onClick?: () => void }) => {
+    if (isHome && href.startsWith('#')) {
+      return (
+        <a href={href} onClick={onClick} className="text-[10px] font-bold uppercase tracking-[0.2em] hover:text-brand-primary transition-colors">
+          {children}
+        </a>
+      );
+    }
+    return (
+      <Link to={href.startsWith('#') ? `/${href}` : href} onClick={onClick} className="text-[10px] font-bold uppercase tracking-[0.2em] hover:text-brand-primary transition-colors">
+        {children}
+      </Link>
+    );
+  };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-brand-ink/10">
+    <nav className="fixed top-0 left-0 right-0 z-[100] bg-brand-ink/95 backdrop-blur-xl border-b border-brand-primary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <div className="flex items-center">
-            <div className="flex flex-col items-center">
-              <span className="text-2xl font-bold tracking-tighter text-brand-purple leading-none">CAR<span className="border-y-2 border-brand-purple mx-1 px-1">4</span>RENT</span>
-              <span className="text-[10px] uppercase tracking-[0.3em] text-brand-ink/60 font-medium">Exclusive Car Rental</span>
-            </div>
-          </div>
+        <div className="flex justify-between items-center h-24">
+          <Link to="/" className="flex items-center group">
+            <img 
+              src="https://car4rent.fr/wp-content/uploads/car4rent.svg" 
+              alt="Car4Rent" 
+              className="h-12 w-auto brightness-0 invert"
+              referrerPolicy="no-referrer"
+            />
+          </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#fleet" className="text-sm uppercase tracking-widest hover:text-brand-purple transition-colors">Fleet</a>
-            <a href="#gallery" className="text-sm uppercase tracking-widest hover:text-brand-purple transition-colors">Gallery</a>
-            <a href="#about" className="text-sm uppercase tracking-widest hover:text-brand-purple transition-colors">About</a>
-            <a href="#faq" className="text-sm uppercase tracking-widest hover:text-brand-purple transition-colors">FAQ</a>
-            <a href="#contact" className="text-sm uppercase tracking-widest hover:text-brand-purple transition-colors">Contact</a>
+          <div className="hidden lg:flex items-center space-x-10 text-white">
+            <NavLink href="/">Home</NavLink>
+            
+            <div 
+              className="relative group"
+              onMouseEnter={() => setIsFleetOpen(true)}
+              onMouseLeave={() => setIsFleetOpen(false)}
+            >
+              <button className="flex items-center text-[10px] font-bold uppercase tracking-[0.2em] hover:text-brand-primary transition-colors">
+                Our Fleet <ChevronDown className="ml-1 w-3 h-3" />
+              </button>
+              
+              <AnimatePresence>
+                {isFleetOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full left-0 w-48 bg-brand-dark shadow-2xl rounded-2xl border border-brand-primary/10 py-4 mt-2"
+                  >
+                    {fleetCategories.map((cat) => (
+                      <a 
+                        key={cat.id} 
+                        href={`#fleet`}
+                        onClick={() => setIsFleetOpen(false)}
+                        className="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-brand-primary/10 hover:text-brand-primary transition-colors"
+                      >
+                        {cat.name}
+                      </a>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <NavLink href="/pricing">Pricing</NavLink>
+            
+            <div 
+              className="relative group"
+              onMouseEnter={() => setIsDestinationsOpen(true)}
+              onMouseLeave={() => setIsDestinationsOpen(false)}
+            >
+              <button className="flex items-center text-[10px] font-bold uppercase tracking-[0.2em] hover:text-brand-primary transition-colors">
+                Destinations <ChevronDown className="ml-1 w-3 h-3" />
+              </button>
+              
+              <AnimatePresence>
+                {isDestinationsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full left-0 w-48 bg-brand-dark shadow-2xl rounded-2xl border border-brand-primary/10 py-4 mt-2"
+                  >
+                    {CITIES[lang].map((city: any) => (
+                      <Link 
+                        key={city.id} 
+                        to={`/destinations/${city.id}`}
+                        className="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-brand-primary/10 hover:text-brand-primary transition-colors"
+                      >
+                        {city.name}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <NavLink href="#about">About</NavLink>
+            <NavLink href="#contact">Contact</NavLink>
             
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={onBook}
-              className="bg-brand-purple text-white px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest"
+              className="bg-brand-primary text-brand-ink px-8 py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-white transition-colors shadow-lg shadow-brand-primary/20"
             >
               {t.bookNow}
             </motion.button>
 
-            <div className="flex items-center space-x-2 border-l border-brand-ink/20 pl-8">
-              <Globe className="w-4 h-4 text-brand-ink/60" />
-              <button 
-                onClick={() => setLang('en')}
-                className={cn("text-xs font-bold uppercase tracking-tighter", lang === 'en' ? "text-brand-purple" : "text-brand-ink/40")}
-              >
-                EN
-              </button>
-              <span className="text-brand-ink/20">/</span>
-              <button 
-                onClick={() => setLang('fr')}
-                className={cn("text-xs font-bold uppercase tracking-tighter", lang === 'fr' ? "text-brand-purple" : "text-brand-ink/40")}
-              >
-                FR
-              </button>
+            <div className="flex items-center space-x-3 border-l border-white/10 pl-10">
+              <Globe className="w-4 h-4 text-white/30" />
+              <div className="flex space-x-2">
+                <button 
+                  onClick={() => setLang('en')}
+                  className={cn("text-[10px] font-black tracking-tighter", lang === 'en' ? "text-brand-primary" : "text-white/20")}
+                >
+                  EN
+                </button>
+                <span className="text-white/10 text-[10px]">/</span>
+                <button 
+                  onClick={() => setLang('fr')}
+                  className={cn("text-[10px] font-black tracking-tighter", lang === 'fr' ? "text-brand-primary" : "text-white/20")}
+                >
+                  FR
+                </button>
+              </div>
             </div>
           </div>
 
-          <div className="md:hidden flex items-center">
-            <button onClick={() => setIsOpen(!isOpen)} className="p-2">
-              {isOpen ? <X /> : <Menu />}
+          <div className="lg:hidden flex items-center">
+            <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-white">
+              {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {isOpen && (
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-white border-b border-brand-ink/10 p-4"
-        >
-          <div className="flex flex-col space-y-4">
-            <a href="#fleet" onClick={() => setIsOpen(false)} className="text-sm uppercase tracking-widest">Fleet</a>
-            <a href="#gallery" onClick={() => setIsOpen(false)} className="text-sm uppercase tracking-widest">Gallery</a>
-            <a href="#about" onClick={() => setIsOpen(false)} className="text-sm uppercase tracking-widest">About</a>
-            <a href="#faq" onClick={() => setIsOpen(false)} className="text-sm uppercase tracking-widest">FAQ</a>
-            <a href="#contact" onClick={() => setIsOpen(false)} className="text-sm uppercase tracking-widest">Contact</a>
-            
-            <button
-              onClick={() => { onBook(); setIsOpen(false); }}
-              className="w-full bg-brand-purple text-white py-3 rounded-xl text-xs font-bold uppercase tracking-widest"
-            >
-              {t.bookNow}
-            </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-brand-ink border-b border-brand-primary/10 overflow-hidden"
+          >
+            <div className="px-6 py-10 space-y-6 text-white">
+              <NavLink href="/" onClick={() => setIsOpen(false)}>Home</NavLink>
+              
+              <div className="space-y-4">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Our Fleet</p>
+                <div className="grid grid-cols-2 gap-4">
+                  {fleetCategories.map((cat) => (
+                    <a 
+                      key={cat.id} 
+                      href={`#fleet`}
+                      onClick={() => setIsOpen(false)}
+                      className="text-[10px] font-bold uppercase tracking-widest hover:text-brand-primary"
+                    >
+                      {cat.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
 
-            <div className="flex space-x-4 pt-4 border-t border-brand-ink/10">
-              <button onClick={() => { setLang('en'); setIsOpen(false); }} className={cn("text-xs font-bold", lang === 'en' ? "text-brand-purple" : "text-brand-ink/40")}>ENGLISH</button>
-              <button onClick={() => { setLang('fr'); setIsOpen(false); }} className={cn("text-xs font-bold", lang === 'fr' ? "text-brand-purple" : "text-brand-ink/40")}>FRANÇAIS</button>
+              <NavLink href="/pricing" onClick={() => setIsOpen(false)}>Pricing</NavLink>
+              
+              <div className="space-y-4">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Destinations</p>
+                <div className="grid grid-cols-2 gap-4">
+                  {CITIES[lang].map((city: any) => (
+                    <Link 
+                      key={city.id} 
+                      to={`/destinations/${city.id}`}
+                      onClick={() => setIsOpen(false)}
+                      className="text-[10px] font-bold uppercase tracking-widest hover:text-brand-primary"
+                    >
+                      {city.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <NavLink href="#about" onClick={() => setIsOpen(false)}>About</NavLink>
+              <NavLink href="#contact" onClick={() => setIsOpen(false)}>Contact</NavLink>
+              
+              <button
+                onClick={() => { onBook(); setIsOpen(false); }}
+                className="w-full bg-brand-primary text-brand-ink py-5 rounded-2xl text-xs font-bold uppercase tracking-widest shadow-xl shadow-brand-primary/20"
+              >
+                {t.bookNow}
+              </button>
+
+              <div className="flex space-x-6 pt-6 border-t border-white/5">
+                <button onClick={() => { setLang('en'); setIsOpen(false); }} className={cn("text-xs font-black", lang === 'en' ? "text-brand-primary" : "text-white/20")}>ENGLISH</button>
+                <button onClick={() => { setLang('fr'); setIsOpen(false); }} className={cn("text-xs font-black", lang === 'fr' ? "text-brand-primary" : "text-white/20")}>FRANÇAIS</button>
+              </div>
             </div>
-          </div>
-        </motion.div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

@@ -4,10 +4,10 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", serif;
   
-  --color-brand-purple: #4B2E83;
-  --color-brand-gold: #D4AF37;
-  --color-brand-paper: #F5F2ED;
-  --color-brand-ink: #1A1A1A;
+  --color-brand-primary: #693DBF;
+  --color-brand-paper: #ffffff;
+  --color-brand-ink: #000000;
+  --color-brand-dark: #1a1a1a;
 }
 
 @layer base {

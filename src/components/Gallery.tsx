@@ -6,9 +6,10 @@ import { ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react';
 
 interface GalleryProps {
   t: Translation;
+  onBook: (carId: string) => void;
 }
 
-export const Gallery: React.FC<GalleryProps> = ({ t }) => {
+export const Gallery: React.FC<GalleryProps> = ({ t, onBook }) => {
   const [selectedCar, setSelectedCar] = React.useState<Car | null>(null);
   const scrollRef = React.useRef<HTMLDivElement>(null);
 
@@ -29,7 +30,7 @@ export const Gallery: React.FC<GalleryProps> = ({ t }) => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <span className="text-brand-gold text-xs font-bold tracking-[0.3em] uppercase mb-4 block">
+            <span className="text-brand-primary text-xs font-bold tracking-[0.3em] uppercase mb-4 block">
               Showcase
             </span>
             <h2 className="text-4xl md:text-5xl font-serif">{t.galleryTitle}</h2>
@@ -77,7 +78,7 @@ export const Gallery: React.FC<GalleryProps> = ({ t }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
                 <div className="flex justify-between items-end w-full">
                   <div>
-                    <p className="text-brand-gold text-[10px] uppercase tracking-widest mb-2">{car.category}</p>
+                    <p className="text-brand-primary text-[10px] uppercase tracking-widest mb-2">{car.category}</p>
                     <h3 className="text-2xl font-serif">{car.name}</h3>
                   </div>
                   <Maximize2 className="w-6 h-6 text-white/60" />
@@ -123,7 +124,7 @@ export const Gallery: React.FC<GalleryProps> = ({ t }) => {
                   />
                 </div>
                 <div className="p-8 md:p-12 flex flex-col justify-center">
-                  <span className="text-brand-gold text-xs font-bold tracking-[0.3em] uppercase mb-4 block">
+                  <span className="text-brand-primary text-xs font-bold tracking-[0.3em] uppercase mb-4 block">
                     {selectedCar.category}
                   </span>
                   <h2 className="text-4xl md:text-5xl font-serif mb-8">{selectedCar.name}</h2>
@@ -143,17 +144,27 @@ export const Gallery: React.FC<GalleryProps> = ({ t }) => {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col sm:flex-row items-center gap-6">
                     <div>
                       <p className="text-[10px] uppercase tracking-widest text-brand-ink/40 mb-1">Starting from</p>
-                      <p className="text-3xl font-bold text-brand-purple">€{selectedCar.pricePerDay}<span className="text-sm font-normal text-brand-ink/40"> / day</span></p>
+                      <p className="text-3xl font-bold text-brand-primary">€{selectedCar.pricePerDay}<span className="text-sm font-normal text-brand-ink/40"> / day</span></p>
                     </div>
-                    <button 
-                      onClick={() => setSelectedCar(null)}
-                      className="bg-brand-ink text-white px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-purple transition-colors"
-                    >
-                      Close View
-                    </button>
+                    <div className="flex gap-4 w-full sm:w-auto">
+                      <motion.button 
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => { onBook(selectedCar.id); setSelectedCar(null); }}
+                        className="flex-1 sm:flex-none bg-brand-primary text-brand-ink px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-widest shadow-lg shadow-brand-primary/20"
+                      >
+                        {t.bookNow}
+                      </motion.button>
+                      <button 
+                        onClick={() => setSelectedCar(null)}
+                        className="flex-1 sm:flex-none bg-brand-ink/5 text-brand-ink px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-ink/10 transition-colors"
+                      >
+                        {t.close}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

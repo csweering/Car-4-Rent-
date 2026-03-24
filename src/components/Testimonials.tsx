@@ -15,7 +15,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ t }) => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-xl">
             <h2 className="text-4xl md:text-5xl font-serif mb-4">{t.reviewsTitle}</h2>
-            <div className="flex items-center space-x-1 text-brand-gold">
+            <div className="flex items-center space-x-1 text-brand-primary">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-5 h-5 fill-current" />
               ))}
@@ -38,7 +38,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ t }) => {
               className="bg-white/5 border border-white/10 p-8 rounded-3xl relative"
             >
               <Quote className="absolute top-6 right-6 w-8 h-8 text-white/10" />
-              <div className="flex items-center space-x-1 text-brand-gold mb-4">
+              <div className="flex items-center space-x-1 text-brand-primary mb-4">
                 {[...Array(review.rating)].map((_, i) => (
                   <Star key={i} className="w-3 h-3 fill-current" />
                 ))}
