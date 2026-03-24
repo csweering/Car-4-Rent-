@@ -15,6 +15,7 @@ import { CarDetailsPage } from './components/CarDetailsPage';
 import { ContactPage } from './components/ContactPage';
 import { EventsPage } from './components/EventsPage';
 import { BlogPage } from './components/BlogPage';
+import { BlogPostPage } from './components/BlogPostPage';
 import { TRANSLATIONS } from './constants';
 import { Language, Translation } from './types';
 import { Phone } from 'lucide-react';
@@ -137,6 +138,7 @@ export default function App() {
               <Route path="/pricing" element={<PricingPage t={t} onBook={handleBook} />} />
               <Route path="/events" element={<EventsPage t={t} />} />
               <Route path="/blog" element={<BlogPage t={t} />} />
+              <Route path="/blog/:id" element={<BlogPostPage t={t} />} />
               <Route path="/contact" element={<ContactPage t={t} />} />
               <Route path="/destinations/:cityId" element={<CityPage t={t} lang={lang} onBook={handleBook} />} />
               <Route path="/car/:carId" element={<CarDetailsPage t={t} onBook={handleBook} />} />
@@ -155,7 +157,7 @@ export default function App() {
 
         {/* Floating Contact Button */}
         <motion.a
-          href="https://wa.me/33493000000"
+          href="https://wa.me/33788278586"
           target="_blank"
           rel="noopener noreferrer"
           initial={{ scale: 0, opacity: 0 }}

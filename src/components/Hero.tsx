@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'motion/react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { Translation } from '../types';
 import { ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -10,14 +10,23 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ t, onBook }) => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+
   return (
-    <section className="relative h-screen flex items-center overflow-hidden pt-20">
+    <section ref={ref} className="relative h-screen flex items-center overflow-hidden pt-20">
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="/hero-bg.jpg" 
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <motion.img 
+          style={{ y }}
+          src="https://car4rent.fr/wp-content/uploads/Rolls-Royce-Dawn-rental-Cannes-2-scaled.jpg" 
           alt="Luxury Car on French Riviera" 
-          className="w-full h-full object-cover"
+          className="absolute left-0 w-full h-[120%] -top-[20%] object-cover"
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-ink/80 via-brand-ink/40 to-transparent" />

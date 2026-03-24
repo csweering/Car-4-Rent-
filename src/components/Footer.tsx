@@ -60,13 +60,13 @@ export const Footer: React.FC<FooterProps> = ({ t }) => {
           <div>
             <h4 className="text-xs font-bold uppercase tracking-[0.2em] mb-8 text-brand-ink/40">{t.contactUs}</h4>
             <div className="space-y-4">
-              <a href="tel:+33493000000" className="flex items-center space-x-3 group">
+              <a href="tel:+33788278586" className="flex items-center space-x-3 group">
                 <Phone className="w-4 h-4 text-brand-primary" />
-                <span className="text-sm text-brand-ink/80 group-hover:text-brand-primary transition-colors">+33 (0) 4 93 00 00 00</span>
+                <span className="text-sm text-brand-ink/80 group-hover:text-brand-primary transition-colors">+33 (0) 7 88 27 85 86</span>
               </a>
-              <a href="mailto:contact@car4rent.fr" className="flex items-center space-x-3 group">
+              <a href="mailto:info@car4rent.fr" className="flex items-center space-x-3 group">
                 <Mail className="w-4 h-4 text-brand-primary" />
-                <span className="text-sm text-brand-ink/80 group-hover:text-brand-primary transition-colors">contact@car4rent.fr</span>
+                <span className="text-sm text-brand-ink/80 group-hover:text-brand-primary transition-colors">info@car4rent.fr</span>
               </a>
             </div>
           </div>
