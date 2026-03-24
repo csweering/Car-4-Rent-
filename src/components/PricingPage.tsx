@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Translation, Car } from '../types';
 import { CARS } from '../constants';
@@ -45,8 +46,9 @@ export const PricingPage: React.FC<PricingPageProps> = ({ t, onBook }) => {
               <tr className="bg-brand-ink text-white text-left">
                 <th className="p-6 font-serif text-lg">Vehicle</th>
                 <th className="p-6 font-serif text-lg">Category</th>
-                <th className="p-6 font-serif text-lg">Specs</th>
-                <th className="p-6 font-serif text-lg">Daily Rate</th>
+                <th className="p-6 font-serif text-lg">1-3 Days</th>
+                <th className="p-6 font-serif text-lg">4-6 Days</th>
+                <th className="p-6 font-serif text-lg">7+ Days</th>
                 <th className="p-6 font-serif text-lg text-right">Action</th>
               </tr>
             </thead>
@@ -73,25 +75,38 @@ export const PricingPage: React.FC<PricingPageProps> = ({ t, onBook }) => {
                     </span>
                   </td>
                   <td className="p-6">
-                    <div className="text-xs space-y-1 text-brand-ink/60">
-                      <p>{car.specs.power}</p>
-                      <p>{car.specs.acceleration} (0-100)</p>
-                      <p>{car.specs.topSpeed} Top Speed</p>
+                    <div className="flex flex-col">
+                      <span className="text-xl font-bold text-brand-primary">€{car.pricing?.days1to3 || car.pricePerDay}</span>
+                      <span className="text-[10px] uppercase tracking-widest text-brand-ink/40">per day</span>
                     </div>
                   </td>
                   <td className="p-6">
                     <div className="flex flex-col">
-                      <span className="text-xl font-bold text-brand-primary">€{car.pricePerDay}</span>
+                      <span className="text-xl font-bold text-brand-primary">€{car.pricing?.days4to6 || car.pricePerDay}</span>
+                      <span className="text-[10px] uppercase tracking-widest text-brand-ink/40">per day</span>
+                    </div>
+                  </td>
+                  <td className="p-6">
+                    <div className="flex flex-col">
+                      <span className="text-xl font-bold text-brand-primary">€{car.pricing?.days7plus || car.pricePerDay}</span>
                       <span className="text-[10px] uppercase tracking-widest text-brand-ink/40">per day</span>
                     </div>
                   </td>
                   <td className="p-6 text-right">
-                    <button
-                      onClick={() => onBook(car.id)}
-                      className="bg-brand-ink text-white px-6 py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-brand-primary transition-colors"
-                    >
-                      {t.bookNow}
-                    </button>
+                    <div className="flex flex-col gap-2 items-end">
+                      <Link
+                        to={`/car/${car.id}`}
+                        className="bg-brand-primary/10 text-brand-primary px-6 py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-brand-primary hover:text-white transition-colors text-center w-32"
+                      >
+                        Details
+                      </Link>
+                      <button
+                        onClick={() => onBook(car.id)}
+                        className="bg-brand-ink text-white px-6 py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-brand-primary transition-colors w-32"
+                      >
+                        {t.bookNow}
+                      </button>
+                    </div>
                   </td>
                 </motion.tr>
               ))}

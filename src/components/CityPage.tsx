@@ -120,16 +120,24 @@ export const CityPage: React.FC<CityPageProps> = ({ t, lang, onBook }) => {
                     
                     <div className="flex items-center justify-between mb-8">
                       <div className="flex flex-col">
-                        <span className="text-2xl font-bold text-brand-primary">€{recommendedCar.pricePerDay}</span>
-                        <span className="text-[10px] uppercase tracking-widest text-brand-ink/40">per day</span>
+                        <span className="text-2xl font-bold text-brand-primary">€{recommendedCar.pricing?.days1to3 || recommendedCar.pricePerDay}</span>
+                        <span className="text-[10px] uppercase tracking-widest text-brand-ink/40">from / day</span>
                       </div>
-                      <button
-                        onClick={() => onBook(recommendedCar.id)}
-                        className="bg-brand-ink text-white px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-primary transition-colors flex items-center"
-                      >
-                        Book Now
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </button>
+                      <div className="flex flex-col gap-2">
+                        <Link
+                          to={`/car/${recommendedCar.id}`}
+                          className="bg-brand-primary/10 text-brand-primary px-8 py-3 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-primary hover:text-white transition-colors flex items-center justify-center"
+                        >
+                          Details
+                        </Link>
+                        <button
+                          onClick={() => onBook(recommendedCar.id)}
+                          className="bg-brand-ink text-white px-8 py-3 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-primary transition-colors flex items-center justify-center"
+                        >
+                          Book Now
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

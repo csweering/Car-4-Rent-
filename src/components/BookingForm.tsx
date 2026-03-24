@@ -82,12 +82,23 @@ export const BookingForm: React.FC<BookingFormProps> = ({ t, isOpen, onClose, se
                       <select 
                         value={formData.carId}
                         onChange={(e) => setFormData({ ...formData, carId: e.target.value })}
-                        className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-primary transition-colors appearance-none"
+                        className="w-full bg-brand-paper border border-brand-ink/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand-primary transition-colors appearance-none mb-2"
                       >
                         {CARS.map(car => (
                           <option key={car.id} value={car.id}>{car.name}</option>
                         ))}
                       </select>
+                      {(() => {
+                        const selectedCar = CARS.find(c => c.id === formData.carId);
+                        if (!selectedCar) return null;
+                        return (
+                          <div className="text-xs text-brand-ink/60 flex items-center gap-4">
+                            <span>1-3 Days: <strong className="text-brand-ink">€{selectedCar.pricing?.days1to3 || selectedCar.pricePerDay}</strong>/day</span>
+                            <span>4-6 Days: <strong className="text-brand-ink">€{selectedCar.pricing?.days4to6 || selectedCar.pricePerDay}</strong>/day</span>
+                            <span>7+ Days: <strong className="text-brand-ink">€{selectedCar.pricing?.days7plus || selectedCar.pricePerDay}</strong>/day</span>
+                          </div>
+                        );
+                      })()}
                     </div>
 
                     {/* Dates */}

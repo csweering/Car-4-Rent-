@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Globe, Menu, X, ChevronDown } from 'lucide-react';
+import { Globe, Menu, X, ChevronDown, Home } from 'lucide-react';
 import { Language, Translation } from '../types';
 import { cn } from '../lib/utils';
 import { Link, useLocation } from 'react-router-dom';
@@ -46,7 +46,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, onBook, t }) => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-[100] bg-brand-ink/95 backdrop-blur-xl border-b border-brand-primary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-24">
+        <div className="flex justify-between items-center h-24 bg-[#6834bd]">
           <Link to="/" className="flex items-center group">
             <img 
               src="https://car4rent.fr/wp-content/uploads/car4rent.svg" 
@@ -57,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, onBook, t }) => {
           </Link>
 
           <div className="hidden lg:flex items-center space-x-10 text-white">
-            <NavLink href="/">Home</NavLink>
+            <NavLink href="/"><Home className="w-4 h-4" /></NavLink>
             
             <div 
               className="relative group"
@@ -174,7 +174,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, onBook, t }) => {
             className="lg:hidden bg-brand-ink border-b border-brand-primary/10 overflow-hidden"
           >
             <div className="px-6 py-10 space-y-6 text-white">
-              <NavLink href="/" onClick={() => setIsOpen(false)}>Home</NavLink>
+              <NavLink href="/" onClick={() => setIsOpen(false)}><Home className="w-4 h-4" /></NavLink>
               
               <div className="space-y-4">
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Our Fleet</p>

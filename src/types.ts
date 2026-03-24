@@ -1,7 +1,7 @@
 export interface Car {
   id: string;
   name: string;
-  category: 'Sport' | 'SUV' | 'Luxury' | 'Convertible';
+  category: 'Sport' | 'SUV' | 'Luxury' | 'Convertible' | 'Sedan' | 'Minivan';
   pricePerDay: number;
   image: string;
   specs: {
@@ -9,6 +9,12 @@ export interface Car {
     acceleration: string;
     topSpeed: string;
   };
+  pricing?: {
+    days1to3: number;
+    days4to6: number;
+    days7plus: number;
+  };
+  description?: string;
 }
 
 export interface Translation {

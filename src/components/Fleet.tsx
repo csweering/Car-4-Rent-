@@ -69,8 +69,8 @@ const CarCard: React.FC<{ car: Car; t: Translation; index: number; onBook: (carI
         <div className="flex justify-between items-start mb-6">
           <h3 className="text-xl font-serif font-bold">{car.name}</h3>
           <div className="text-right">
-            <span className="text-2xl font-bold text-brand-primary">€{car.pricePerDay}</span>
-            <p className="text-[10px] uppercase tracking-widest text-brand-ink/40">{t.perDay}</p>
+            <span className="text-2xl font-bold text-brand-primary">€{car.pricing?.days1to3 || car.pricePerDay}</span>
+            <p className="text-[10px] uppercase tracking-widest text-brand-ink/40">from / day</p>
           </div>
         </div>
 
@@ -89,14 +89,22 @@ const CarCard: React.FC<{ car: Car; t: Translation; index: number; onBook: (carI
           </div>
         </div>
 
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={() => onBook(car.id)}
-          className="w-full bg-brand-ink text-white py-4 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-primary transition-colors"
-        >
-          {t.bookNow}
-        </motion.button>
+        <div className="flex gap-2">
+          <Link
+            to={`/car/${car.id}`}
+            className="flex-1 bg-brand-primary/10 text-brand-primary py-4 rounded-xl text-xs font-bold uppercase tracking-widest text-center hover:bg-brand-primary hover:text-white transition-colors"
+          >
+            Details
+          </Link>
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => onBook(car.id)}
+            className="flex-1 bg-brand-ink text-white py-4 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-primary transition-colors"
+          >
+            {t.bookNow}
+          </motion.button>
+        </div>
       </div>
     </motion.div>
   );

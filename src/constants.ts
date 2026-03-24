@@ -2,172 +2,264 @@ import { Car, Translation } from './types';
 
 export const CARS: Car[] = [
   {
-    id: 'ferrari-f8',
-    name: 'Ferrari F8 Tributo',
-    category: 'Sport',
-    pricePerDay: 1200,
-    image: 'https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=1000',
-    specs: {
-      power: '720 HP',
-      acceleration: '2.9s',
-      topSpeed: '340 km/h'
-    }
+    id: 'mercedes-s-class-rental',
+    name: 'Mercedes S Class',
+    category: 'Sedan',
+    pricePerDay: 680,
+    image: 'https://car4rent.fr/wp-content/uploads/Mercedes_S450_Side_Profile_Car4Rent-removebg-e1729810571359.png',
+    specs: { power: '710 hp', acceleration: '2.9s', topSpeed: '340 km/h' },
+    pricing: { days1to3: 680, days4to6: 600, days7plus: 520 },
+    description: "Experience the ultimate in luxury and sophistication by renting a Mercedes S Class while exploring the stunning French Riviera. This iconic destination, known for its sun-drenched coastlines, glamorous resorts, and charming towns, deserves to be discovered in style."
   },
   {
-    id: 'lamborghini-huracan',
-    name: 'Lamborghini Huracán Evo',
-    category: 'Sport',
-    pricePerDay: 1100,
-    image: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&q=80&w=1000',
-    specs: {
-      power: '640 HP',
-      acceleration: '3.0s',
-      topSpeed: '325 km/h'
-    }
+    id: 'ferrari-f8-rental',
+    name: 'Ferrari F8 Spider',
+    category: 'Convertible',
+    pricePerDay: 2380,
+    image: 'https://car4rent.fr/wp-content/uploads/IMG_8947-removebg-e1695152503352.png',
+    specs: { power: '710 hp', acceleration: '2.9s', topSpeed: '340 km/h' },
+    pricing: { days1to3: 2380, days4to6: 2080, days7plus: 1880 },
+    description: "Looking for a Ferrari F8 rental in Monaco or Cannes? This model carries the legacy of the renowned Ferrari 488 and stands as a notable improvement over its predecessor, pushing the boundaries of what a sports car can achieve, a car designed to turn heads!"
   },
   {
-    id: 'porsche-911',
-    name: 'Porsche 911 Carrera S',
-    category: 'Sport',
-    pricePerDay: 650,
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=1000',
-    specs: {
-      power: '450 HP',
-      acceleration: '3.5s',
-      topSpeed: '308 km/h'
-    }
+    id: 'rent-an-audi-a5-convertible',
+    name: 'Audi A5 Convertible',
+    category: 'Convertible',
+    pricePerDay: 450,
+    image: 'https://car4rent.fr/wp-content/uploads/Audi-A5-Convertible-e1682875146413.jpg',
+    specs: { power: '261 hp', acceleration: 'Not specified', topSpeed: 'Not specified' },
+    pricing: { days1to3: 450, days4to6: 380, days7plus: 320 },
+    description: "Rent an Audi A5 Convertible on the French Riviera at an affordable price and discover the fantastic seaside on the route of Provence. Hire an Audi A5 Convertible, and regardless of where you go, the performance and beauty of this vehicle will always shine."
   },
   {
-    id: 'range-rover',
-    name: 'Range Rover Autobiography',
+    id: 'rent-a-bmw-x6',
+    name: 'BMW X6',
     category: 'SUV',
-    pricePerDay: 550,
-    image: 'https://images.unsplash.com/photo-1606611013016-969c19ba27bb?auto=format&fit=crop&q=80&w=1000',
-    specs: {
-      power: '525 HP',
-      acceleration: '5.4s',
-      topSpeed: '250 km/h'
-    }
+    pricePerDay: 680,
+    image: 'https://car4rent.fr/wp-content/uploads/IMG_6976-removebg-e1692113425199.png',
+    specs: { power: '375 hp', acceleration: '5.2s', topSpeed: '209 km/h' },
+    pricing: { days1to3: 680, days4to6: 600, days7plus: 520 },
+    description: "Renting a BMW X6 in the South of France couldn't be any easier. Car4rent offers a wide range of luxury cars for rent. Our BMW X6 X-Drive M40 Diesel is one of the most dynamic and versatile cars available for hire."
   },
   {
-    id: 'mercedes-g63',
-    name: 'Mercedes-AMG G63',
-    category: 'SUV',
-    pricePerDay: 850,
-    image: 'https://images.unsplash.com/photo-1520031441872-265e4ff70366?auto=format&fit=crop&q=80&w=1000',
-    specs: {
-      power: '585 HP',
-      acceleration: '4.5s',
-      topSpeed: '220 km/h'
-    }
-  },
-  {
-    id: 'rolls-royce-ghost',
-    name: 'Rolls-Royce Ghost',
-    category: 'Luxury',
-    pricePerDay: 1800,
-    image: 'https://images.unsplash.com/photo-1631214524020-5e183976b9ad?auto=format&fit=crop&q=80&w=1000',
-    specs: {
-      power: '563 HP',
-      acceleration: '4.8s',
-      topSpeed: '250 km/h'
-    }
-  },
-  {
-    id: 'porsche-911-cabrio',
-    name: 'Porsche 911 Cabriolet',
-    category: 'Convertible',
-    pricePerDay: 750,
-    image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&q=80&w=1000',
-    specs: {
-      power: '450 HP',
-      acceleration: '3.7s',
-      topSpeed: '306 km/h'
-    }
-  },
-  {
-    id: 'lamborghini-huracan-spyder',
-    name: 'Lamborghini Huracán Spyder',
-    category: 'Convertible',
-    pricePerDay: 1250,
-    image: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&q=80&w=1000',
-    specs: {
-      power: '610 HP',
-      acceleration: '3.4s',
-      topSpeed: '324 km/h'
-    }
-  },
-  {
-    id: 'ferrari-488-spider',
-    name: 'Ferrari 488 Spider',
-    category: 'Convertible',
-    pricePerDay: 1300,
-    image: 'https://images.unsplash.com/photo-1594731802114-192669694002?auto=format&fit=crop&q=80&w=1000',
-    specs: {
-      power: '670 HP',
-      acceleration: '3.0s',
-      topSpeed: '325 km/h'
-    }
-  },
-  {
-    id: 'rolls-royce-dawn',
-    name: 'Rolls-Royce Dawn',
-    category: 'Convertible',
-    pricePerDay: 2200,
-    image: 'https://images.unsplash.com/photo-1631214524020-5e183976b9ad?auto=format&fit=crop&q=80&w=1000',
-    specs: {
-      power: '563 HP',
-      acceleration: '4.9s',
-      topSpeed: '250 km/h'
-    }
-  },
-  {
-    id: 'bentley-bentayga',
+    id: 'rent-bentley-bentayga',
     name: 'Bentley Bentayga',
     category: 'SUV',
-    pricePerDay: 950,
-    image: 'https://images.unsplash.com/photo-1621135802920-133df287f89c?auto=format&fit=crop&q=80&w=1000',
-    specs: {
-      power: '542 HP',
-      acceleration: '4.5s',
-      topSpeed: '290 km/h'
-    }
+    pricePerDay: 1900,
+    image: 'https://car4rent.fr/wp-content/uploads/rent-bentley-bentaga-1-e1682875975925.jpg',
+    specs: { power: '542 hp', acceleration: '4.4s', topSpeed: '290 km/h' },
+    pricing: { days1to3: 1900, days4to6: 1700, days7plus: 1500 },
+    description: "Rent Bentley Bentayga and enjoy luxury, speed, and style. The French Riviera provides a luxurious and high-performance driving experience. Behind the wheel of the Bentley Bentayga, discover the attractions, beautiful beaches, and vibrant nightlife."
   },
   {
-    id: 'chevrolet-corvette',
-    name: 'Chevrolet Corvette C8',
-    category: 'Sport',
-    pricePerDay: 800,
-    image: 'https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&q=80&w=1000',
-    specs: {
-      power: '495 HP',
-      acceleration: '2.9s',
-      topSpeed: '312 km/h'
-    }
+    id: 'rent-a-mercedes-g500-squared',
+    name: 'Mercedes G500 Squared',
+    category: 'SUV',
+    pricePerDay: 1500,
+    image: 'https://car4rent.fr/wp-content/uploads/Rent-Mercedes-G500-squared-1-scaled.jpg',
+    specs: { power: '416 hp', acceleration: '6.0s', topSpeed: '160 km/h' },
+    pricing: { days1to3: 1500, days4to6: 1300, days7plus: 1100 },
+    description: "Rent a Mercedes G500 Squared 4x4 for unparalleled off-road performance and exclusivity. There are only a few G500 Squared rentals on the road, making you the centre of attention with intrigued looks and compliments."
   },
   {
-    id: 'mercedes-sl',
+    id: 'audi-q8-rental',
+    name: 'Audi Q8',
+    category: 'SUV',
+    pricePerDay: 580,
+    image: 'https://car4rent.fr/wp-content/uploads/Audi-Q8-Competition--e1719323386964.jpg',
+    specs: { power: '335 hp', acceleration: '5.9s', topSpeed: 'Not specified' },
+    pricing: { days1to3: 580, days4to6: 490, days7plus: 420 },
+    description: "Rent an Audi Q8 on the French Riviera at an affordable price and enjoy the Riviera roads. We offer the latest Audi Q8 S Line Competition 60 TFSI e Hybrid for your pleasure."
+  },
+  {
+    id: 'hire-a-mercedes-v-class',
+    name: 'Mercedes V Class',
+    category: 'Minivan',
+    pricePerDay: 360,
+    image: 'https://car4rent.fr/wp-content/uploads/Mercedes-v-scaled-e1682882690824.jpg',
+    specs: { power: '237 hp', acceleration: '9.1s', topSpeed: 'Not specified' },
+    pricing: { days1to3: 360, days4to6: 330, days7plus: 300 },
+    description: "Hire a Mercedes V Class to travel with your family in a luxurious minivan. For your next journey in the South of France, the V Class rental is for you! It represents the best in its category and can be considered the reference for passenger transport."
+  },
+  {
+    id: 'rent-a-porsche-992-targa',
+    name: 'Porsche 911 Targa',
+    category: 'Convertible',
+    pricePerDay: 900,
+    image: 'https://car4rent.fr/wp-content/uploads/Porsche-992-Targa-4.jpg',
+    specs: { power: '379 hp', acceleration: '4.2s', topSpeed: '289 km/h' },
+    pricing: { days1to3: 900, days4to6: 810, days7plus: 730 },
+    description: "Treat yourself to a Porsche 992 Targa rental in French Riviera. The Porsche 911 (992) Targa is a halfway house between Coupé and convertible models. An elaborate process involves the giant rear screen lifting completely off the car."
+  },
+  {
+    id: 'rent-rolls-royce-cullinan',
+    name: 'Rolls-Royce Cullinan',
+    category: 'SUV',
+    pricePerDay: 4000,
+    image: 'https://car4rent.fr/wp-content/uploads/Rolls-royce-Cullinan-scaled-e1682882008387.jpg',
+    specs: { power: '563 hp', acceleration: '5.2s', topSpeed: '250 km/h' },
+    pricing: { days1to3: 4000, days4to6: 3600, days7plus: 3200 },
+    description: "Rent Rolls-Royce Cullinan in French Riviera with Car4rent Luxury Car Rental. Treat yourself to an unforgettable experience in the South of France. The Rolls-Royce Cullinan is the first SUV in the Rolls-Royce range."
+  },
+  {
+    id: 'rent-ferrari-portofino',
+    name: 'Ferrari Portofino',
+    category: 'Convertible',
+    pricePerDay: 1900,
+    image: 'https://car4rent.fr/wp-content/uploads/portofino-avtg-1-scaled-e1682880713647.jpg',
+    specs: { power: '591 hp', acceleration: '3.5s', topSpeed: '320 km/h' },
+    pricing: { days1to3: 1900, days4to6: 1700, days7plus: 1500 },
+    description: "Rent Ferrari Portofino in French Riviera, the perfect car for a scenic drive along the coast from Monaco to Saint-Tropez. An experience to remember for a lifetime: the Ferrari Portofino Rental."
+  },
+  {
+    id: 'rent-a-mercedes-g63',
+    name: 'Mercedes-AMG G63',
+    category: 'SUV',
+    pricePerDay: 1080,
+    image: 'https://car4rent.fr/wp-content/uploads/mercedes-g63-e1682882197175.jpg',
+    specs: { power: '577 hp', acceleration: '4.5s', topSpeed: '240 km/h' },
+    pricing: { days1to3: 1080, days4to6: 880, days7plus: 680 },
+    description: "Rent a Mercedes G63 on the French Riviera, observe the beautiful landscapes, and enjoy the world-class location. Everything from the Mercedes G63 rental's eye-catching and intimidating exterior to its luxurious leather interior adds to the design, style, and class."
+  },
+  {
+    id: 'hire-a-lamborghini-urus',
+    name: 'Lamborghini Urus',
+    category: 'SUV',
+    pricePerDay: 2100,
+    image: 'https://car4rent.fr/wp-content/uploads/Lamborghini-Urus-scaled-e1682875627422.jpg',
+    specs: { power: '641 hp', acceleration: '3.6s', topSpeed: '305 km/h' },
+    pricing: { days1to3: 2100, days4to6: 1900, days7plus: 1700 },
+    description: "Hire a Lamborghini Urus in French Riviera and enjoy an absolute stunner that perfectly balances the functionality of an SUV with an exotic rental car. It is the first 4-door Lamborghini rental ever to be produced."
+  },
+  {
+    id: 'rent-a-mercedes-sl',
     name: 'Mercedes-AMG SL 63',
     category: 'Convertible',
     pricePerDay: 900,
-    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=1000',
-    specs: {
-      power: '585 HP',
-      acceleration: '3.6s',
-      topSpeed: '315 km/h'
-    }
+    image: 'https://car4rent.fr/wp-content/uploads/Louer-une-Mercedes-SL.png',
+    specs: { power: '362 hp', acceleration: '4.9s', topSpeed: '250 km/h' },
+    pricing: { days1to3: 900, days4to6: 810, days7plus: 730 },
+    description: "Rent a Mercedes SL AMG in the French Riviera: Experience the Magic Sounds. If you're looking for a way to add a touch of luxury to your next business or vacation trip in France, we have the perfect luxury ride for you."
   },
   {
-    id: 'bmw-x6',
-    name: 'BMW X6 M Competition',
+    id: 'rent-a-bentley-convertible',
+    name: 'Bentley Continental GTC',
+    category: 'Convertible',
+    pricePerDay: 2100,
+    image: 'https://car4rent.fr/wp-content/uploads/Rent-Bentley-convertible-4-e1682882537313.jpg',
+    specs: { power: '626 hp', acceleration: '3.8s', topSpeed: '333 km/h' },
+    pricing: { days1to3: 2100, days4to6: 1900, days7plus: 1700 },
+    description: "Rent a Bentley Convertible on French Riviera will be an experience you will never forget. Visualize yourself driving along the great coastal road between Nice and Monaco. At the wheel of your luxurious Bentley Convertible rental car, you will be attracted to its quilted leather seats."
+  },
+  {
+    id: 'rolls-royce-dawn-rental',
+    name: 'Rolls-Royce Dawn',
+    category: 'Convertible',
+    pricePerDay: 3200,
+    image: 'https://car4rent.fr/wp-content/uploads/rolls-royce-dawn-scaled-e1682875714193.jpg',
+    specs: { power: '563 hp', acceleration: '4.9s', topSpeed: '250 km/h' },
+    pricing: { days1to3: 3200, days4to6: 3000, days7plus: 2800 },
+    description: "Experience unrivaled opulence in the heart of Monaco when you rent a Rolls-Royce Dawn. Feel the wind through your hair, the sun on your back, and take in your exotic surroundings all at once."
+  },
+  {
+    id: 'rent-a-ferrari-488-spider',
+    name: 'Ferrari 488 Spider',
+    category: 'Convertible',
+    pricePerDay: 1900,
+    image: 'https://car4rent.fr/wp-content/uploads/Ferrari-488-spider-scaled-e1682875876515.jpg',
+    specs: { power: '661 hp', acceleration: '3.0s', topSpeed: '325 km/h' },
+    pricing: { days1to3: 1900, days4to6: 1700, days7plus: 1500 },
+    description: "Rent a Ferrari 488 Spider and arrive at your special event in a powerful roadster. Explore the roads of the French Riviera with our Ferrari 488 Spider rental: a car designed to turn heads!"
+  },
+  {
+    id: 'rent-lamborghini-huracan-spyder',
+    name: 'Lamborghini Huracán Spyder',
+    category: 'Convertible',
+    pricePerDay: 1900,
+    image: 'https://car4rent.fr/wp-content/uploads/car4rent-lamborghini-huracan-roadside-Edited-Edited.png',
+    specs: { power: '631 hp', acceleration: '3.1s', topSpeed: '325 km/h' },
+    pricing: { days1to3: 1900, days4to6: 1700, days7plus: 1500 },
+    description: "Rent a Lamborghini Huracán Spyder from Car4rent and make your next road trip unforgettable. As one of the fastest cars in the world, a Lamborghini Huracán Spyder rental is guaranteed to turn heads as you cruise along the French Riviera."
+  },
+  {
+    id: 'rent-a-mercedes-convertible',
+    name: 'Mercedes E-Class Convertible',
+    category: 'Convertible',
+    pricePerDay: 450,
+    image: 'https://car4rent.fr/wp-content/uploads/Mercedes-E-Class-220d-Convertible-e1682882426922.jpg',
+    specs: { power: '362 hp', acceleration: '4.9s', topSpeed: '250 km/h' },
+    pricing: { days1to3: 450, days4to6: 380, days7plus: 320 },
+    description: "Rent a Mercedes Convertible in France has never been easier with Car4Rent! Find your perfect ride from a wide range of vehicles to suit your needs and budget."
+  },
+  {
+    id: 'rent-a-porsche-992',
+    name: 'Porsche 911 Carrera S',
+    category: 'Convertible',
+    pricePerDay: 900,
+    image: 'https://car4rent.fr/wp-content/uploads/porsche-992-cabriolet-e1682843670522.jpg',
+    specs: { power: '379 hp', acceleration: '4.2s', topSpeed: '289 km/h' },
+    pricing: { days1to3: 900, days4to6: 810, days7plus: 730 },
+    description: "At Car4rent, you can rent a Porsche 992 at an affordable price, whether for a day or a long-term rental. No matter the occasion, treat yourself to this iconic model and enjoy the thrill of discovering the coastal roads of the French Riviera."
+  },
+  {
+    id: 'rent-a-chevrolet-corvette',
+    name: 'Chevrolet Corvette C8',
+    category: 'Sport',
+    pricePerDay: 900,
+    image: 'https://car4rent.fr/wp-content/uploads/IMG_6130-removebg-e1692273288435.png',
+    specs: { power: '495 hp', acceleration: '2.9s', topSpeed: '312 km/h' },
+    pricing: { days1to3: 900, days4to6: 810, days7plus: 730 },
+    description: "Rent a Chevrolet Corvette Convertible, the return of a legend! Renting a Chevrolet Corvette has been a dream since childhood. After a six-year absence in France, the eighth generation has been profoundly rethought."
+  },
+  {
+    id: 'land-rover-rental',
+    name: 'Range Rover Autobiography',
     category: 'SUV',
-    pricePerDay: 700,
-    image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&q=80&w=1000',
-    specs: {
-      power: '625 HP',
-      acceleration: '3.8s',
-      topSpeed: '290 km/h'
-    }
+    pricePerDay: 840,
+    image: 'https://car4rent.fr/wp-content/uploads/Land-Rover-Rental-3-e1682882347590.jpg',
+    specs: { power: 'Not specified', acceleration: 'Not specified', topSpeed: 'Not specified' },
+    pricing: { days1to3: 840, days4to6: 680, days7plus: 540 },
+    description: "Rent a Range Rover in French Riviera from Car4rent. We offer the 2023 model Range Rover for hire. The revamped SUV attracts global elites with its elegant styling and opulent cabin."
+  },
+  {
+    id: 'rent-a-porsche-911-cabriolet',
+    name: 'Porsche 911 Cabriolet',
+    category: 'Convertible',
+    pricePerDay: 900,
+    image: 'https://car4rent.fr/wp-content/uploads/porsche-992-cabriolet-e1682843670522.jpg',
+    specs: { power: 'Not specified', acceleration: 'Not specified', topSpeed: 'Not specified' },
+    pricing: { days1to3: 900, days4to6: 810, days7plus: 730 },
+    description: "Rent a Porsche 911 Cabriolet with Car4Rent, the first luxury car rental on the French Riviera. You can experience the thrill of driving a Porsche by renting from Car4rent."
+  },
+  {
+    id: 'rent-a-volkswagen-golf-gte',
+    name: 'Volkswagen Golf GTE',
+    category: 'Sedan',
+    pricePerDay: 260,
+    image: 'https://car4rent.fr/wp-content/uploads/VW-e1719323808514.png',
+    specs: { power: '245 hp', acceleration: 'Not specified', topSpeed: 'Not specified' },
+    pricing: { days1to3: 260, days4to6: 235, days7plus: 210 },
+    description: "Rent a Volkswagen Golf GTE and imagine yourself crisscrossing the roads of the French Riviera behind the wheel of this hybrid Golf 8 rental car."
+  },
+  {
+    id: 'rent-a-mini-convertible',
+    name: 'Mini Cooper Convertible',
+    category: 'Convertible',
+    pricePerDay: 260,
+    image: 'https://car4rent.fr/wp-content/uploads/car4rent-mini-cooper-cabriolet-side-Edited-Edited.png',
+    specs: { power: 'Not specified', acceleration: 'Not specified', topSpeed: 'Not specified' },
+    pricing: { days1to3: 260, days4to6: 235, days7plus: 210 },
+    description: "At Car4rent in Cannes, you can rent a MINI Convertible and experience the ultimate driving fun on the French Riviera. This stylish and compact convertible is perfect for cruising along scenic coastal roads."
+  },
+  {
+    id: 'rent-a-range-rover-sport',
+    name: 'Range Rover Sport',
+    category: 'SUV',
+    pricePerDay: 750,
+    image: 'https://car4rent.fr/wp-content/uploads/range-sport-svr-avtg.png',
+    specs: { power: 'Not specified', acceleration: 'Not specified', topSpeed: 'Not specified' },
+    pricing: { days1to3: 750, days4to6: 680, days7plus: 610 },
+    description: "Rent a Range Rover Sport P460e Hybrid at an affordable price from Car4rent. The Range Rover Sport offers luxury, on-road performance, and off-road capability."
   }
 ];
 
@@ -284,7 +376,7 @@ export const CITIES: Record<string, any> = {
         'Dine at a beachfront restaurant'
       ],
       bestCarAdvice: 'For the ultimate Croisette experience, a convertible is a must to see and be seen.',
-      recommendedCarId: 'ferrari-488-spider'
+      recommendedCarId: 'rent-a-ferrari-488-spider'
     },
     {
       id: 'nice',
@@ -298,7 +390,7 @@ export const CITIES: Record<string, any> = {
         'Hike up to Castle Hill for the view'
       ],
       bestCarAdvice: 'A stylish SUV like the Range Rover is perfect for navigating the city and nearby hills.',
-      recommendedCarId: 'range-rover'
+      recommendedCarId: 'land-rover-rental'
     },
     {
       id: 'monaco',
@@ -312,7 +404,7 @@ export const CITIES: Record<string, any> = {
         'Drive the legendary F1 circuit'
       ],
       bestCarAdvice: 'Only a high-performance supercar like the Lamborghini Huracán fits the prestige of Monte Carlo.',
-      recommendedCarId: 'lamborghini-huracan'
+      recommendedCarId: 'rent-lamborghini-huracan-spyder'
     },
     {
       id: 'st-tropez',
@@ -326,7 +418,7 @@ export const CITIES: Record<string, any> = {
         'Enjoy the nightlife at the Port'
       ],
       bestCarAdvice: 'The Mercedes G63 is the iconic choice for the rugged yet glamorous St-Tropez lifestyle.',
-      recommendedCarId: 'mercedes-g63'
+      recommendedCarId: 'rent-a-mercedes-g63'
     }
   ],
   fr: [
@@ -342,7 +434,7 @@ export const CITIES: Record<string, any> = {
         'Dîner dans un restaurant en bord de mer'
       ],
       bestCarAdvice: 'Pour l\'expérience ultime de la Croisette, un cabriolet est indispensable pour voir et être vu.',
-      recommendedCarId: 'ferrari-488-spider'
+      recommendedCarId: 'rent-a-ferrari-488-spider'
     },
     {
       id: 'nice',
@@ -356,7 +448,7 @@ export const CITIES: Record<string, any> = {
         'Monter à la Colline du Château pour la vue'
       ],
       bestCarAdvice: 'Un SUV élégant comme le Range Rover est parfait pour naviguer en ville et dans les collines voisines.',
-      recommendedCarId: 'range-rover'
+      recommendedCarId: 'land-rover-rental'
     },
     {
       id: 'monaco',
@@ -370,7 +462,7 @@ export const CITIES: Record<string, any> = {
         'Conduire sur le légendaire circuit de F1'
       ],
       bestCarAdvice: 'Seule une supercar haute performance comme la Lamborghini Huracán correspond au prestige de Monte-Carlo.',
-      recommendedCarId: 'lamborghini-huracan'
+      recommendedCarId: 'rent-lamborghini-huracan-spyder'
     },
     {
       id: 'st-tropez',
@@ -384,7 +476,7 @@ export const CITIES: Record<string, any> = {
         'Profiter de la vie nocturne sur le Port'
       ],
       bestCarAdvice: 'Le Mercedes G63 est le choix iconique pour le style de vie à la fois robuste et glamour de St-Tropez.',
-      recommendedCarId: 'mercedes-g63'
+      recommendedCarId: 'rent-a-mercedes-g63'
     }
   ]
 };

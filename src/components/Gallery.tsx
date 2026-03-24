@@ -4,6 +4,8 @@ import { Translation, Car } from '../types';
 import { CARS } from '../constants';
 import { ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react';
 
+import { Link } from 'react-router-dom';
+
 interface GalleryProps {
   t: Translation;
   onBook: (carId: string) => void;
@@ -147,9 +149,16 @@ export const Gallery: React.FC<GalleryProps> = ({ t, onBook }) => {
                   <div className="flex flex-col sm:flex-row items-center gap-6">
                     <div>
                       <p className="text-[10px] uppercase tracking-widest text-brand-ink/40 mb-1">Starting from</p>
-                      <p className="text-3xl font-bold text-brand-primary">€{selectedCar.pricePerDay}<span className="text-sm font-normal text-brand-ink/40"> / day</span></p>
+                      <p className="text-3xl font-bold text-brand-primary">€{selectedCar.pricing?.days1to3 || selectedCar.pricePerDay}<span className="text-sm font-normal text-brand-ink/40"> / day</span></p>
                     </div>
                     <div className="flex gap-4 w-full sm:w-auto">
+                      <Link 
+                        to={`/car/${selectedCar.id}`}
+                        onClick={() => setSelectedCar(null)}
+                        className="flex-1 sm:flex-none bg-brand-primary/10 text-brand-primary px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-brand-primary hover:text-white transition-colors text-center"
+                      >
+                        Details
+                      </Link>
                       <motion.button 
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
