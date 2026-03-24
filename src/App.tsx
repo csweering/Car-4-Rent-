@@ -13,6 +13,8 @@ import { PricingPage } from './components/PricingPage';
 import { CityPage } from './components/CityPage';
 import { CarDetailsPage } from './components/CarDetailsPage';
 import { ContactPage } from './components/ContactPage';
+import { EventsPage } from './components/EventsPage';
+import { BlogPage } from './components/BlogPage';
 import { TRANSLATIONS } from './constants';
 import { Language, Translation } from './types';
 import { Phone } from 'lucide-react';
@@ -133,6 +135,8 @@ export default function App() {
             <Routes>
               <Route path="/" element={<HomePage t={t} onBook={handleBook} />} />
               <Route path="/pricing" element={<PricingPage t={t} onBook={handleBook} />} />
+              <Route path="/events" element={<EventsPage t={t} />} />
+              <Route path="/blog" element={<BlogPage t={t} />} />
               <Route path="/contact" element={<ContactPage t={t} />} />
               <Route path="/destinations/:cityId" element={<CityPage t={t} lang={lang} onBook={handleBook} />} />
               <Route path="/car/:carId" element={<CarDetailsPage t={t} onBook={handleBook} />} />

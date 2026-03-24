@@ -57,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, onBook, t }) => {
           </Link>
 
           <div className="hidden lg:flex items-center space-x-10 text-white">
-            <NavLink href="/"><Home className="w-4 h-4" /></NavLink>
+            <NavLink href="/">Home</NavLink>
             
             <div 
               className="relative group"
@@ -65,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, onBook, t }) => {
               onMouseLeave={() => setIsFleetOpen(false)}
             >
               <button className="flex items-center text-[10px] font-bold uppercase tracking-[0.2em] hover:text-brand-primary transition-colors">
-                Our Fleet <ChevronDown className="ml-1 w-3 h-3" />
+                Vehicles <ChevronDown className="ml-1 w-3 h-3" />
               </button>
               
               <AnimatePresence>
@@ -79,7 +79,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, onBook, t }) => {
                     {fleetCategories.map((cat) => (
                       <a 
                         key={cat.id} 
-                        href={`#fleet`}
+                        href={`/#fleet`}
                         onClick={() => setIsFleetOpen(false)}
                         className="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-brand-primary/10 hover:text-brand-primary transition-colors"
                       >
@@ -92,39 +92,8 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, onBook, t }) => {
             </div>
 
             <NavLink href="/pricing">Pricing</NavLink>
-            
-            <div 
-              className="relative group"
-              onMouseEnter={() => setIsDestinationsOpen(true)}
-              onMouseLeave={() => setIsDestinationsOpen(false)}
-            >
-              <button className="flex items-center text-[10px] font-bold uppercase tracking-[0.2em] hover:text-brand-primary transition-colors">
-                Destinations <ChevronDown className="ml-1 w-3 h-3" />
-              </button>
-              
-              <AnimatePresence>
-                {isDestinationsOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 w-48 bg-brand-dark shadow-2xl rounded-2xl border border-brand-primary/10 py-4 mt-2"
-                  >
-                    {CITIES[lang].map((city: any) => (
-                      <Link 
-                        key={city.id} 
-                        to={`/destinations/${city.id}`}
-                        className="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-brand-primary/10 hover:text-brand-primary transition-colors"
-                      >
-                        {city.name}
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            <NavLink href="#about">About</NavLink>
+            <NavLink href="/events">Events</NavLink>
+            <NavLink href="/blog">Blog</NavLink>
             <NavLink href="/contact">Contact</NavLink>
             
             <motion.button
@@ -174,15 +143,15 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, onBook, t }) => {
             className="lg:hidden bg-brand-ink border-b border-brand-primary/10 overflow-hidden"
           >
             <div className="px-6 py-10 space-y-6 text-white">
-              <NavLink href="/" onClick={() => setIsOpen(false)}><Home className="w-4 h-4" /></NavLink>
+              <NavLink href="/" onClick={() => setIsOpen(false)}>Home</NavLink>
               
               <div className="space-y-4">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Our Fleet</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Vehicles</p>
                 <div className="grid grid-cols-2 gap-4">
                   {fleetCategories.map((cat) => (
                     <a 
                       key={cat.id} 
-                      href={`#fleet`}
+                      href={`/#fleet`}
                       onClick={() => setIsOpen(false)}
                       className="text-[10px] font-bold uppercase tracking-widest hover:text-brand-primary"
                     >
@@ -193,24 +162,8 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, onBook, t }) => {
               </div>
 
               <NavLink href="/pricing" onClick={() => setIsOpen(false)}>Pricing</NavLink>
-              
-              <div className="space-y-4">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Destinations</p>
-                <div className="grid grid-cols-2 gap-4">
-                  {CITIES[lang].map((city: any) => (
-                    <Link 
-                      key={city.id} 
-                      to={`/destinations/${city.id}`}
-                      onClick={() => setIsOpen(false)}
-                      className="text-[10px] font-bold uppercase tracking-widest hover:text-brand-primary"
-                    >
-                      {city.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              <NavLink href="#about" onClick={() => setIsOpen(false)}>About</NavLink>
+              <NavLink href="/events" onClick={() => setIsOpen(false)}>Events</NavLink>
+              <NavLink href="/blog" onClick={() => setIsOpen(false)}>Blog</NavLink>
               <NavLink href="/contact" onClick={() => setIsOpen(false)}>Contact</NavLink>
               
               <button
