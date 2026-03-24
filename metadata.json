@@ -1,0 +1,7 @@
+{
+  "name": "Car4Rent - Luxury Car Rental French Riviera",
+  "description": "Premium car rental services in Cannes, Nice, Monaco and across the French Riviera. Experience luxury on the Côte d'Azur.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
